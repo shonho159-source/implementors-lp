@@ -1,0 +1,23 @@
+# Internal docs — not for production
+SOURCES.md
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Stray duplicate from image copy
+img/image copy.png
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*~
+
+# Logs
+*.log
+
+# Vercel
+.vercel
