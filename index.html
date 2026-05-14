@@ -553,7 +553,10 @@
   .cmp3-row-labels { background:#0F0721; border-radius:20px; padding:2.25rem 1.5rem 1.5rem; }
   .cmp3-card { background:#FFFFFF; border-radius:20px; padding:2.25rem 1.5rem 1.5rem; box-shadow: 0 6px 28px rgba(0,0,0,0.2); }
   .cmp3-card.featured { background: linear-gradient(180deg, #FFFFFF 0%, #F0EBFF 100%); box-shadow: 0 12px 40px rgba(168,85,247,0.28), 0 0 0 2px rgba(168,85,247,0.5); position:relative; }
-  .cmp3-row { padding: 0; min-height: 3.75rem; display:flex; align-items:center; justify-content:center; border-top: 1px solid rgba(15,7,33,0.18); color:#1F1330; font-weight:500; text-align:center; }
+  .cmp3-row { padding: 1rem 0.5rem; min-height: 4.5rem; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.35rem; border-top: 1px solid rgba(15,7,33,0.18); color:#1F1330; font-weight:500; text-align:center; line-height:1.45; }
+  @media (min-width: 768px) {
+    .cmp3-row { flex-direction: row; min-height: 3.75rem; padding: 0; gap: 0; }
+  }
   .cmp3-row:first-of-type { border-top:none; }
   .cmp3-row-labels .cmp3-row { color:#D4C8F5; border-color: rgba(255,255,255,0.22); }
   /* Align label rows to card rows and strengthen dividers */
@@ -1285,11 +1288,11 @@
     <!-- Graph card -->
     <div class="relative rounded-2xl p-5 sm:p-7 lg:p-9" style="background:linear-gradient(180deg, rgba(26,15,46,0.55) 0%, rgba(10,5,21,0.85) 100%);border:1px solid rgba(168,85,247,0.18);box-shadow:0 30px 70px -40px rgba(0,0,0,0.8), inset 0 1px 0 rgba(221,210,251,0.04);">
 
-      <!-- Y-axis hint label -->
-      <div class="absolute top-1/2 right-3 lg:right-4 -translate-y-1/2 -rotate-90 origin-center text-[10px] lg:text-[11px] tracking-[0.22em] text-cream-500 font-heebo font-medium pointer-events-none select-none">DEMAND · ביקוש בשוק</div>
+      <!-- Y-axis hint label (desktop only — too cramped on mobile) -->
+      <div class="hidden sm:block absolute top-1/2 right-3 lg:right-4 -translate-y-1/2 -rotate-90 origin-center text-[10px] lg:text-[11px] tracking-[0.22em] text-cream-500 font-heebo font-medium pointer-events-none select-none">DEMAND · ביקוש בשוק</div>
 
-      <!-- Aspect-locked container so SVG + HTML labels share coordinates -->
-      <div class="relative" style="aspect-ratio: 1000/420;">
+      <!-- Aspect-locked container — taller on mobile for label breathing room -->
+      <div class="relative aspect-[5/4] sm:aspect-[1000/420]">
         <svg viewBox="0 0 1000 420" class="absolute inset-0 w-full h-full" preserveAspectRatio="none" aria-label="גרף — אבולוציית מקצועות הטכנולוגיה לאורך השנים">
           <defs>
             <linearGradient id="evo-stroke" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -1361,47 +1364,47 @@
         <!-- HTML labels overlay (full Hebrew typography, positioned by data point %) -->
         <div class="absolute inset-0 pointer-events-none font-heebo">
           <!-- ===== Profession labels (above each curve point) ===== -->
-          <!-- 2015 -->
-          <div class="absolute -translate-x-1/2 text-center" style="left:10%; top:62%;">
+          <!-- 2015 — mobile: anchor by right edge to avoid left-side clipping -->
+          <div class="absolute text-center hidden sm:block" style="left:10%; top:62%; transform:translateX(-50%);">
             <div class="text-[12px] lg:text-[13px] font-semibold text-cream-300 whitespace-nowrap">מטמיע <bdi>BI</bdi></div>
           </div>
           <!-- 2018 -->
           <div class="absolute -translate-x-1/2 text-center hidden sm:block" style="left:28%; top:54%;">
             <div class="text-[12px] lg:text-[13px] font-semibold text-cream-300 whitespace-nowrap">מנתח דאטה</div>
           </div>
-          <!-- 2021 -->
+          <!-- 2021 — visible on all sizes (the biggest mid-graph milestone) -->
           <div class="absolute -translate-x-1/2 text-center" style="left:48%; top:35%;">
-            <div class="text-[12px] lg:text-[13.5px] font-semibold text-cream-200 whitespace-nowrap">איש אוטומציות</div>
+            <div class="text-[11px] sm:text-[12px] lg:text-[13.5px] font-semibold text-cream-200 whitespace-nowrap">איש אוטומציות</div>
           </div>
           <!-- 2024 -->
           <div class="absolute -translate-x-1/2 text-center hidden sm:block" style="left:69%; top:14%;">
             <div class="text-[12px] lg:text-[13.5px] font-semibold text-cream-200 whitespace-nowrap">מהנדס פרומפטים</div>
           </div>
-          <!-- 2026 — the headline endpoint -->
-          <div class="absolute -translate-x-1/2 text-center" style="left:91%; top:-2%;">
-            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full whitespace-nowrap"
+          <!-- 2026 — the headline endpoint (mobile: anchor a bit inward to avoid right-edge clipping) -->
+          <div class="absolute text-center" style="left:91%; top:-2%; transform:translateX(-50%);">
+            <div class="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full whitespace-nowrap"
                  style="background:linear-gradient(135deg,#7C3AED,#A855F7);box-shadow:0 0 24px rgba(168,85,247,0.55), inset 0 1px 0 rgba(255,255,255,0.18);">
               <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
-              <span class="text-[12px] lg:text-[13.5px] font-bold text-white">מטמיע <bdi>AI</bdi></span>
+              <span class="text-[11px] sm:text-[12px] lg:text-[13.5px] font-bold text-white">מטמיע <bdi>AI</bdi></span>
             </div>
           </div>
 
-          <!-- ===== Year labels (below baseline) ===== -->
+          <!-- ===== Year labels (below baseline) — smaller on mobile to fit comfortably ===== -->
           <div class="absolute -translate-x-1/2 text-center" style="left:10%; top:88%;">
-            <div class="text-[11px] lg:text-[12px] text-cream-500 tabular-nums"><bdi>2015</bdi></div>
+            <div class="text-[10px] sm:text-[11px] lg:text-[12px] text-cream-500 tabular-nums"><bdi>2015</bdi></div>
           </div>
           <div class="absolute -translate-x-1/2 text-center" style="left:28%; top:88%;">
-            <div class="text-[11px] lg:text-[12px] text-cream-500 tabular-nums"><bdi>2018</bdi></div>
+            <div class="text-[10px] sm:text-[11px] lg:text-[12px] text-cream-500 tabular-nums"><bdi>2018</bdi></div>
           </div>
           <div class="absolute -translate-x-1/2 text-center" style="left:48%; top:88%;">
-            <div class="text-[11px] lg:text-[12px] text-cream-500 tabular-nums"><bdi>2021</bdi></div>
+            <div class="text-[10px] sm:text-[11px] lg:text-[12px] text-cream-500 tabular-nums"><bdi>2021</bdi></div>
           </div>
           <div class="absolute -translate-x-1/2 text-center" style="left:69%; top:88%;">
-            <div class="text-[11px] lg:text-[12px] text-cream-500 tabular-nums"><bdi>2024</bdi></div>
+            <div class="text-[10px] sm:text-[11px] lg:text-[12px] text-cream-500 tabular-nums"><bdi>2024</bdi></div>
           </div>
           <div class="absolute -translate-x-1/2 text-center" style="left:91%; top:88%;">
-            <div class="text-[12px] lg:text-[13px] text-royal-300 font-bold tabular-nums"><bdi>2026</bdi></div>
-            <div class="text-[10px] lg:text-[11px] text-cream-500 mt-0.5 whitespace-nowrap">היום</div>
+            <div class="text-[11px] sm:text-[12px] lg:text-[13px] text-royal-300 font-bold tabular-nums"><bdi>2026</bdi></div>
+            <div class="text-[9px] sm:text-[10px] lg:text-[11px] text-cream-500 mt-0.5 whitespace-nowrap">היום</div>
           </div>
         </div>
       </div>
@@ -3048,7 +3051,8 @@
           <span class="text-[12px] tracking-[0.18em] font-heebo font-bold uppercase" style="color:#6D28D9;">ההתחייבות שלנו ברורה</span>
         </div>
         <h3 class="font-heebo font-bold text-[24px] lg:text-[32px] leading-[1.18]" style="color:#0F0721;">
-          לקוח אמיתי בחוזה. תיק עבודות בסיום.<br class="hidden sm:block"/>
+          לקוח אמיתי בחוזה.<br/>
+          תיק עבודות בסיום.<br/>
           <span style="color:#6D28D9;">חסר רק להתאים מסלול.</span>
         </h3>
         <p class="mt-3 text-[14.5px] lg:text-[15.5px] leading-[1.7]" style="color:#3D2F5C;">
@@ -3215,17 +3219,6 @@
             <span><span class="text-white font-semibold">חיבור ללקוח אמיתי</span> מובטח בחוזה לכל מי שנכנס להכשרה.</span>
           </li>
         </ul>
-
-        <div class="mt-10 p-5 rounded-2xl border border-royal-400/20 flex items-center gap-4" style="background:rgba(26,15,46,.6);">
-          <span class="grid place-items-center w-12 h-12 rounded-full" style="background:linear-gradient(135deg,#7C3AED,#A855F7);">
-            <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
-          </span>
-          <div class="flex-1">
-            <p class="text-[13px] text-cream-400">שיחת אבחון אישית</p>
-            <p class="text-[14.5px] text-white font-semibold">עם יועץ ההכשרה</p>
-          </div>
-          <svg class="w-5 h-5 text-royal-300"><use href="#i-whatsapp"/></svg>
-        </div>
       </div>
 
       <!-- Form side — Floating overlay card -->
