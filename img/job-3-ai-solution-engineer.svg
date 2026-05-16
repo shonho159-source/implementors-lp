@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480">
+  <defs>
+    <linearGradient id="jbg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#241541"/>
+      <stop offset="100%" stop-color="#120820"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#jbg)"/>
+  <!-- LinkedIn-style top badge -->
+  <rect x="40" y="40" width="100" height="28" rx="6" fill="#0A66C2"/>
+  <text x="90" y="60" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#fff">in / LinkedIn</text>
+  <!-- Role -->
+  <text x="40" y="160" font-family="Heebo, Arial, sans-serif" font-size="32" font-weight="700" fill="#DDD2FB" text-anchor="start">AI Solution Engineer</text>
+  <!-- Salary chip -->
+  <rect x="40" y="200" width="160" height="42" rx="21" fill="rgba(168,85,247,0.18)" stroke="#A855F7" stroke-width="1.5"/>
+  <text x="120" y="228" text-anchor="middle" font-family="Heebo, Arial, sans-serif" font-size="18" font-weight="700" fill="#C084FC">45–65K ₪</text>
+  <!-- Apply button -->
+  <rect x="40" y="380" width="120" height="44" rx="6" fill="#A855F7"/>
+  <text x="100" y="408" text-anchor="middle" font-family="Heebo, Arial, sans-serif" font-size="16" font-weight="700" fill="#fff">Apply</text>
+</svg>
