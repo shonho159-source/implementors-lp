@@ -831,48 +831,6 @@
 </head>
 
 <body class="antialiased">
-<!-- ========= PASSWORD GATE ========= -->
-<style>
-  #lp-gate { position: fixed; inset: 0; background: #0A0515; z-index: 99999; display: flex; align-items: center; justify-content: center; direction: rtl; font-family: 'Heebo', sans-serif; }
-  #lp-gate.lp-hidden { display: none; }
-  #lp-gate .gate-card { padding: 36px 40px; background: linear-gradient(180deg, rgba(168,85,247,0.10), rgba(168,85,247,0.04)); border: 1px solid rgba(168,85,247,0.35); border-radius: 16px; text-align: center; max-width: 360px; box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 60px rgba(168,85,247,0.15); }
-  #lp-gate p { color: #DDD2FB; font-size: 16px; margin-bottom: 20px; }
-  #lp-gate input { padding: 12px 16px; font-size: 17px; border-radius: 10px; border: 1px solid rgba(168,85,247,0.4); background: rgba(255,255,255,0.06); color: #fff; width: 100%; text-align: center; box-sizing: border-box; margin-bottom: 12px; }
-  #lp-gate input:focus { outline: none; border-color: #C084FC; }
-  #lp-gate button { padding: 12px 24px; background: linear-gradient(135deg,#7C3AED,#A855F7); color: white; border: none; border-radius: 10px; cursor: pointer; font-size: 16px; font-weight: 600; width: 100%; }
-  #lp-gate .gate-err { color: #FCA5A5; font-size: 13px; margin-top: 10px; min-height: 16px; }
-</style>
-<div id="lp-gate">
-  <div class="gate-card">
-    <p>הדף מוגן בסיסמה</p>
-    <input type="password" id="lp-gate-pw" placeholder="סיסמה" autofocus />
-    <button id="lp-gate-btn">כניסה</button>
-    <div class="gate-err" id="lp-gate-err"></div>
-  </div>
-</div>
-<script>
-(function(){
-  var GATE_PW = '1234';
-  var gate = document.getElementById('lp-gate');
-  var input = document.getElementById('lp-gate-pw');
-  var btn = document.getElementById('lp-gate-btn');
-  var err = document.getElementById('lp-gate-err');
-  if (sessionStorage.getItem('lp-auth') === 'ok') { gate.classList.add('lp-hidden'); return; }
-  function check() {
-    if (input.value === GATE_PW) {
-      sessionStorage.setItem('lp-auth', 'ok');
-      gate.classList.add('lp-hidden');
-    } else {
-      err.textContent = 'סיסמה לא נכונה';
-      input.value = '';
-      input.focus();
-    }
-  }
-  btn.addEventListener('click', check);
-  input.addEventListener('keydown', function(e){ if (e.key === 'Enter') check(); });
-})();
-</script>
-<!-- ========= END PASSWORD GATE ========= -->
 
 
 
