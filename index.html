@@ -2935,11 +2935,11 @@
 
       fetch(WEBHOOK_URL, {
         method: 'POST',
-        mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       })
-      .then(function(){
+      .then(function(res){
+        if (!res.ok) throw new Error('HTTP ' + res.status);
         form.innerHTML =
           '<div style="text-align:center;padding:36px 8px;">' +
             '<p style="font-family:Heebo,sans-serif;font-weight:700;font-size:23px;color:#0F0721;">תודה! קיבלנו את הפרטים \uD83C\uDF89</p>' +
